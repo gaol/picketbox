@@ -479,7 +479,10 @@ public class LdapExtLoginModule extends UsernamePasswordLoginModule
              attrList = new String[] {roleAttributeID};
          }
          constraints.setReturningAttributes(attrList);
-         rolesSearch(ctx, constraints, username, userDN, recursion, 0);
+         if (rolesCtxDN != null && roleFilter != null)
+         {
+             rolesSearch(ctx, constraints, username, userDN, recursion, 0);
+         }
       }
       catch(Exception e)
       {
